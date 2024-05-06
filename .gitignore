@@ -52,7 +52,3 @@ coverage
 /client/public/uploads/
 .vercel
 
-# Next.js build output
-.next
-out
-.next*
