@@ -8,7 +8,7 @@ function App() {
     const [plants, setPlants] = useState([]);
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/plants/get`)
+        fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/plants`)
             .then(response => response.json())
             .then(data => setPlants(data))
             .catch(error => console.error('Error fetching plants:', error));
@@ -16,7 +16,7 @@ function App() {
     }, []);
 
     const addPlant = plant => {
-        fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/plants/add`, {
+        fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/plants`, {
             method: 'POST', // Specify the method to POST
             headers: {
                 'Content-Type': 'application/json', // Set the headers to inform the server about the data type
@@ -71,7 +71,7 @@ const updatePlant = (plantId, newData) => {
 };
 
 function deletePlant(plantId) {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/plants/${plantId}/delete`, {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/plants/${plantId}`, {
         method: 'DELETE'
     })
     .then(response => {
