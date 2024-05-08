@@ -13,7 +13,7 @@ app.use('/', require('./routes/plantRoutes'));
 
 
 // Port configuration
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 const connectDB = require('../config/db');
 // Connect to Database
