@@ -9,7 +9,7 @@ console.log(process.env.DB_URI); // Access your environment variable
 // Middleware
 app.use(cors());
 app.use(express.json()); // for parsing application/json
-app.use('/api/plants', require('./routes/plantRoutes'));
+app.use('/', require('./routes/plantRoutes'));
 
 
 // Port configuration
