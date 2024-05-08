@@ -90,12 +90,10 @@ function deletePlant(plantId) {
         console.error('Error deleting plant:', error);
     });
 }
-const PORT = process.env.PORT || 3001;
-console.log(process.env.PORT)
+
     return (
         <div>
             <Header />
-            {process.env.NEXT_PUBLIC_BASE_API_URL}
             
 
             <AddPlantForm addPlant={addPlant} />
