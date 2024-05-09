@@ -70,7 +70,7 @@ const updatePlant = (plantId, newData) => {
     });
 };
 
-function deletePlant(plantId) {
+const deletePlant = (plantId) => {
     fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/plants/${plantId}`, {
         method: 'DELETE'
     })

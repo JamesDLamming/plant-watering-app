@@ -1,7 +1,7 @@
 const Plant = require('../models/Plant');
 
 // Get all plants
-exports.getPlants = async (req, res) => {
+async function getPlants(req, res) {
     try {
         const plants = await Plant.find();
         res.json(plants);
@@ -11,7 +11,7 @@ exports.getPlants = async (req, res) => {
 };
 
 // Add a new plant
-exports.addPlant = async (req, res) => {
+async function addPlant(req, res) {
     try {
         const newPlant = new Plant(req.body);
         const plant = await newPlant.save();
@@ -22,7 +22,7 @@ exports.addPlant = async (req, res) => {
 };
 
 // Update water date
-exports.updateWaterDate = async (req, res) => {
+async function updateWaterDate(req, res) {
     try {
         const plant = await Plant.findById(req.params.id);
         plant.lastWateredDate = Date.now();
@@ -36,7 +36,7 @@ exports.updateWaterDate = async (req, res) => {
 
 
 // Edit Plant
-exports.updatePlant = async (req, res) => {
+async function updatePlant(req, res) {
     const { id } = req.params;
     const { name, location, wateringFrequency, lastWateredDate, nextWaterDate } = req.body;
 
@@ -64,7 +64,7 @@ exports.updatePlant = async (req, res) => {
 };
 
 //Delete plant
-exports.deletePlant = async (req, res) => {
+async function deletePlant(req, res) {
     try {
         const { id } = req.params;
         const deletedPlant = await Plant.findByIdAndDelete(id);
@@ -79,3 +79,5 @@ exports.deletePlant = async (req, res) => {
         res.status(500).send('Server error');
     }
 };
+
+module.exports = {getPlants, addPlant, updateWaterDate, updatePlant, deletePlant}
