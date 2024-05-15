@@ -6,25 +6,25 @@ function EditPlantModal({ plant, onClose, onSave, onDelete }) {
     const [currentDeletePlant, setCurrentDeletePlant] = useState(null);
 
 
-    const modalStyle = {
-        position: 'fixed',  // Fixed position to cover the entire viewport
-        top: 0,
-        left: 0,
-        width: '100vw',  // 100% of the viewport width
-        height: '100vh',  // 100% of the viewport height
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Semi-transparent background
-        zIndex: 1000,  // Ensure it is above other content
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    };
+    // const modalStyle = {
+    //     position: 'fixed',  // Fixed position to cover the entire viewport
+    //     top: 0,
+    //     left: 0,
+    //     width: '100vw',  // 100% of the viewport width
+    //     height: '100vh',  // 100% of the viewport height
+    //     backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Semi-transparent background
+    //     zIndex: 1000,  // Ensure it is above other content
+    //     display: 'flex',
+    //     justifyContent: 'center',
+    //     alignItems: 'center'
+    // };
 
-    const modalContentStyle = {
-        backgroundColor: 'white',  // Background color for the modal content
-        padding: '20px',
-        borderRadius: '10px',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'  // Optional: Adding some shadow
-    };
+    // const modalContentStyle = {
+    //     backgroundColor: 'white',  // Background color for the modal content
+    //     padding: '20px',
+    //     borderRadius: '10px',
+    //     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'  // Optional: Adding some shadow
+    // };
 
     const [formData, setFormData] = useState({
         name: plant.name,
@@ -59,8 +59,8 @@ function EditPlantModal({ plant, onClose, onSave, onDelete }) {
     
 
     return (
-        <div style={modalStyle}  className="modal-overlay" onClick={handleOutsideClick}>
-        <div style={modalContentStyle}  className="modal-content" onClick={e => e.stopPropagation()}>
+        <div  className="modal-overlay" onClick={handleOutsideClick}>
+        <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div className="modal">
             <form onSubmit={handleSubmit}>
                 <label>Name:</label>

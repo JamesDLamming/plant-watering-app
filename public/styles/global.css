@@ -1,0 +1,56 @@
+html, body {
+    height: 100%;    /* This sets the height of the html and body to be 100% of the viewport height */
+    min-height: 100%; /* Ensures that the minimum height is also 100% of the viewport height */
+    margin: 0;        /* Removes default margin provided by browsers */
+    padding: 0;       /* Removes default padding provided by browsers */
+}
+
+body {
+    display: flex;       /* Enables the use of Flexbox which helps in stretching the container */
+    flex-direction: column; /* Stacks child elements vertically */
+}
+
+/* Additional container to ensure content also takes full height */
+#__next {
+    flex: 1;
+    display: flex;
+}
+
+#content{
+    flex:1
+}
+
+.button {
+    background-color: #48bb78; /* Approximation of Tailwind's green-500 */
+    color: white;
+    padding: 4px; /* Tailwind's p-2, assuming the base is 4px */
+    margin-top: 8px; /* Tailwind's mt-2, assuming the base is 4px */
+    margin-left: 8px;
+    border-radius: 4px;
+    
+}
+
+.form, .form-input {
+    padding: 4px;
+    margin: 2px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #b6b6b6;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+};
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

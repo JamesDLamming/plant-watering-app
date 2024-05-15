@@ -2,9 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import PlantList from '../components/PlantList';
- import AddPlantForm from '../components/AddPlantForm';
+import AddPlantForm from '../components/AddPlantForm';
+import '../public/styles/global.css'
 
 function App() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const handleAddPlant = () => {
+        setIsModalOpen(true)
+    }
     const [plants, setPlants] = useState([]);
 
     useEffect(() => {
@@ -91,12 +96,30 @@ const deletePlant = (plantId) => {
     });
 }
 
+function handleOutsideClick(e) {
+    if (e.target.className === "modal-overlay") {
+        setIsModalOpen(false)
+    }
+}
+
     return (
-        <div>
+        <div id='content'>
             <Header />
             
-
-            <AddPlantForm addPlant={addPlant} />
+            <button className='button' onClick={handleAddPlant}>Add Plant</button>
+            {isModalOpen && (
+                    <div  className="modal-overlay" onClick={handleOutsideClick}>
+                    <div   className="modal-content" onClick={e => e.stopPropagation()}>
+                    <div className="modal">
+            <AddPlantForm addPlant={addPlant} onClose={() => setIsModalOpen(false)}
+/>
+            </div>
+        
+        </div>
+        </div>
+            )
+            
+            }
             
             <PlantList plants={plants} updatePlantWateringDate={updatePlantWateringDate} updatePlant={updatePlant} deletePlant={deletePlant}/>
         </div>
