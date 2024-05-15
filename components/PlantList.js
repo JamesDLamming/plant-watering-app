@@ -12,7 +12,7 @@ function PlantList({ plants, updatePlantWateringDate, updatePlant, deletePlant }
     };
 
     return (
-        <div>
+        <div className='plantList'>
             {plants.sort((a, b) => new Date(a.nextWaterDate) - new Date(b.nextWaterDate)).map(plant => (
                 <PlantItem key={plant._id} plant={plant}
                     onWaterPlant={() => {

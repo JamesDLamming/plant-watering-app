@@ -31,6 +31,8 @@ function AddPlantForm({ addPlant, onClose }) {
         
         // Reset form fields
         setPlant({ name: '', location: '', lastWateredDate: '', wateringFrequency: '', wateringAmount: '', photo: '' });
+
+        onClose()
     };
 
     // Function to calculate the next watering date
@@ -42,14 +44,14 @@ function AddPlantForm({ addPlant, onClose }) {
 
     return (
         <form onSubmit={handleSubmit} className="form">
-            <input className="form-input" type="text" name="name" value={plant.name} onChange={handleChange} placeholder="Plant Name" required />
-            <input className="form-input" type="text" name="location" value={plant.location} onChange={handleChange} placeholder="Location" required />
-            <input className="form-input" type="date" name="lastWateredDate" value={plant.lastWateredDate} onChange={handleChange} placeholder="Last Watered Date" required />
-            <input className="form-input"  type="number" min="1" name="wateringFrequency" value={plant.wateringFrequency} onChange={handleChange} placeholder="Watering Frequency (days)" required />
-            <input className="form-input" type="number" min="1" name="wateringAmount" value={plant.wateringAmount} onChange={handleChange} placeholder="Water Amount (ml)" required />
-            <input className="form-input" type="text" name="photo" value={plant.photo} onChange={handleChange} placeholder="Photo URL" required />
+            <div className='form-input'><input className="form-input" type="text" name="name" value={plant.name} onChange={handleChange} placeholder="Plant Name" required /></div>
+            <div className='form-input'><input className="form-input" type="text" name="location" value={plant.location} onChange={handleChange} placeholder="Location" required /></div>
+            <div className='form-input'><input className="form-input" type="date" name="lastWateredDate" value={plant.lastWateredDate} onChange={handleChange} placeholder="Last Watered Date" required /></div>
+            <div className='form-input'><input className="form-input"  type="number" min="1" name="wateringFrequency" value={plant.wateringFrequency} onChange={handleChange} placeholder="Watering Frequency (days)" required /></div>
+            <div className='form-input'><input className="form-input" type="number" min="1" name="wateringAmount" value={plant.wateringAmount} onChange={handleChange} placeholder="Water Amount (ml)" required /></div>
+            <div className='form-input'><input className="form-input" type="text" name="photo" value={plant.photo} onChange={handleChange} placeholder="Photo URL" required /></div>
             <button type="submit" className="button">Add Plant</button>
-            <button onClick={onClose}>Close</button>
+            <button onClick={onClose} className='button closeButton'>Close</button>
         </form>
     );
 }

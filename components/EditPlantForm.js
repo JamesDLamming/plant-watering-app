@@ -42,12 +42,12 @@ function EditPlantForm({ addPlant }) {
 
     return (
         <form onSubmit={handleSubmit} className="p-4">
-            <input type="text" name="name" value={plant.name} onChange={handleChange} placeholder="Plant Name" required />
-            <input type="text" name="location" value={plant.location} onChange={handleChange} placeholder="Location" required />
-            <input type="date" name="lastWateredDate" value={plant.lastWateredDate} onChange={handleChange} placeholder="Last Watered Date" required />
-            <input type="number" min="1" name="wateringFrequency" value={plant.wateringFrequency} onChange={handleChange} placeholder="Watering Frequency (days)" required />
-            <input type="number" min="1" name="wateringAmount" value={plant.wateringAmount} onChange={handleChange} placeholder="Water Amount (ml)" required />
-            <input type="text" name="photo" value={plant.photo} onChange={handleChange} placeholder="Photo URL" required />
+            <input type="text" name="name" className="form-input" value={plant.name} onChange={handleChange} placeholder="Plant Name" required />
+            <input type="text" name="location" className="form-input"  value={plant.location} onChange={handleChange} placeholder="Location" required />
+            <input type="date" name="lastWateredDate" className="form-input"  value={plant.lastWateredDate} onChange={handleChange} placeholder="Last Watered Date" required />
+            <input type="number" min="1" name="wateringFrequency" className="form-input" value={plant.wateringFrequency} onChange={handleChange} placeholder="Watering Frequency (days)" required />
+            <input type="number" min="1" name="wateringAmount" className="form-input"  value={plant.wateringAmount} onChange={handleChange} placeholder="Water Amount (ml)" required />
+            <input type="text" name="photo" value={plant.photo} className="form-input"  onChange={handleChange} placeholder="Photo URL" required />
             <button type="submit" className="bg-green-500 text-white p-2 mt-2">Edit Plant</button>
         </form>
     );

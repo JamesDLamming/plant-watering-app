@@ -17,14 +17,21 @@ function PlantItem({ plant, onWaterPlant, onEditPlant }) {
     
 
     return (
-        <div className="border p-4">
+        <div className="plant-item">
+            <div>
+                Photo placeholder
+            </div>
+            <div>
             <h3>{plant.name}</h3>
             <p>Location: {plant.location}</p>
             <p>Water every {plant.wateringFrequency} days</p>
-            <p>Last watered: {plant.lastWateredDate ? formatDate(plant.lastWateredDate) : 'Not available'}</p>
-            <p>Next watered: {plant.nextWaterDate ? formatDate(plant.nextWaterDate) : 'Not available'}</p>
-            <button className="bg-blue-500 text-white p-2" onClick={onEditPlant}>Edit</button>
-            <button className="bg-blue-500 text-white p-2" onClick={onWaterPlant}>Water Now</button>
+            <p>Last watered on: {plant.lastWateredDate ? formatDate(plant.lastWateredDate) : 'Not available'}</p>
+            <p style={{fontWeight :'bold'}}>Next watered on: {plant.nextWaterDate ? formatDate(plant.nextWaterDate) : 'Not available'}</p>
+            </div>
+            <div>
+            <button className="button editButton" onClick={onEditPlant}>Edit</button>
+            <button className="button waterNowButton" onClick={onWaterPlant}>Water Now</button>
+            </div>
         </div>
     );
 }
