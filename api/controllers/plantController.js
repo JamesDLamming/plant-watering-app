@@ -13,13 +13,29 @@ async function getPlants(req, res) {
 // Add a new plant
 async function addPlant(req, res) {
     try {
-        const newPlant = new Plant(req.body);
-        const plant = await newPlant.save();
-        res.json(plant);
+      const { name, location, lastWateredDate, wateringFrequency, wateringAmount, nextWaterDate } = req.body;
+      console.log('Request Body:', req.body);
+      console.log('File Info:', req.file);
+  
+      const photoUrl = req.file ? req.file.location : null; // S3 file URL
+  
+      const newPlant = new Plant({
+        name,
+        location,
+        lastWateredDate,
+        wateringFrequency,
+        wateringAmount,
+        nextWaterDate,
+        photo: photoUrl // Save the S3 URL in the plant document
+      });
+  
+      await newPlant.save();
+      res.status(201).json(newPlant);
     } catch (err) {
-        res.status(500).send('Server Error');
+      console.error('Error adding plant:', err);
+      res.status(500).send('Server Error');
     }
-};
+  };
 
 // Update water date
 async function updateWaterDate(req, res) {

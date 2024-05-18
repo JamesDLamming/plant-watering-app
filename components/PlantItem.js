@@ -19,10 +19,10 @@ function PlantItem({ plant, onWaterPlant, onEditPlant }) {
     return (
         <div className="plant-item">
             <div>
-                Photo placeholder
+                <img src={plant.photo}></img>
             </div>
             <div>
-            <h3>{plant.name}</h3>
+            <h3 className='plantItemHeading'>{plant.name}</h3>
             <p>Location: {plant.location}</p>
             <p>Water every {plant.wateringFrequency} days</p>
             <p>Last watered on: {plant.lastWateredDate ? formatDate(plant.lastWateredDate) : 'Not available'}</p>

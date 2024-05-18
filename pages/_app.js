@@ -20,13 +20,10 @@ function App() {
 
     }, []);
 
-    const addPlant = plant => {
+    const addPlant = formData => {
         fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/plants`, {
             method: 'POST', // Specify the method to POST
-            headers: {
-                'Content-Type': 'application/json', // Set the headers to inform the server about the data type
-            },
-            body: JSON.stringify(plant) // Convert the JavaScript object to a JSON string
+            body: formData // Convert the JavaScript object to a JSON string
         })
         .then(response => response.json()) // Convert the response to JSON
         .then(data => {
@@ -106,17 +103,18 @@ function handleOutsideClick(e) {
         <div id='content'>
             <Header />
             
-            <button className='button' onClick={handleAddPlant}>Add Plant</button>
+            <button className='button addPlantButton' onClick={handleAddPlant}>Add Plant</button>
             {isModalOpen && (
-                    <div  className="modal-overlay" onClick={handleOutsideClick}>
-                    <div   className="modal-content" onClick={e => e.stopPropagation()}>
-                    <div className="modal">
-            <AddPlantForm addPlant={addPlant} onClose={() => setIsModalOpen(false)}
-/>
-            </div>
-        
-        </div>
-        </div>
+                
+                        <div  className="modal-overlay" onClick={handleOutsideClick}>
+                            <div   className="modal-content" onClick={e => e.stopPropagation()}>
+                            <div className='modalHeading'>
+                    <h3>Add Plant</h3>                </div>
+
+                                    <AddPlantForm addPlant={addPlant} onClose={() => setIsModalOpen(false)}/>
+                                
+                            </div>
+                        </div>
             )
             
             }

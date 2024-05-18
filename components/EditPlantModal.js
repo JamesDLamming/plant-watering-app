@@ -41,21 +41,23 @@ function EditPlantModal({ plant, onClose, onSave, onDelete }) {
     return (
         <div  className="modal-overlay" onClick={handleOutsideClick}>
         <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <div className='modalHeading'>
+                    <h3>Edit Plant</h3>                </div>
         <div className="modal">
             <form onSubmit={handleSubmit} className='form'>
-                <div className="form-input" >
+                <div className="form-input-parent" >
                     <label>Name:</label>
                     <input type="text" name="name" className='form-input' value={formData.name} onChange={handleChange} />
                 </div>
-                <div className="form-input" >
+                <div className="form-input-parent" >
                 <label>Location:</label>
                 <input type="text" name="location" className='form-input' value={formData.location} onChange={handleChange} />
                 </div>
-                <div className="form-input" >
+                <div className="form-input-parent" >
                 <label>Last Watered Date:</label>
-                <input type="date" name="lastWateredDate" className='form-input' value={formData.lastWateredDate} onChange={handleChange} />
+                <input type="date" name="lastWateredDate" className='form-input' value={formData.lastWateredDate.split('T')[0]} onChange={handleChange} />
                 </div>
-                <div className="form-input" >
+                <div className="form-input-parent" >
                 <label>Watering Frequency (days):</label>
                 <input type="number" name="wateringFrequency" className='form-input' value={formData.wateringFrequency} onChange={handleChange} />
                 </div>

@@ -31,8 +31,8 @@ function DeletePlantModal({ plant, onClose, onDelete }) {
             <div style={modalContentStyle} className="modal-content" >
                 <div>
                     <p>Are you sure you want to delete {plant.name}?</p>
-                    <button onClick={handleDelete}>Delete Plant</button>
-                    <button onClick={onClose}>Cancel</button>
+                    <button className="button deletePlantButton" onClick={handleDelete}>Delete Plant</button>
+                    <button className="button closeButton" onClick={onClose}>Cancel</button>
                 </div>
             </div>
         </div>

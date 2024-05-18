@@ -2,8 +2,8 @@ import React from 'react';
 
 function Header() {
     return (
-        <header className="bg-green-500 text-white p-4 text-center">
-            <h1>Plant Watering Reminder</h1>
+        <header className="header">
+            <h1 className='Title'>Plant Watering Reminder</h1>
         </header>
     );
 }

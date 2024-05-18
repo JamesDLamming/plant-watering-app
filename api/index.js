@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 
+
 require('dotenv').config();
 
 console.log(process.env.DB_URI); // Access your environment variable
