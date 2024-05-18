@@ -18,8 +18,8 @@ function PlantItem({ plant, onWaterPlant, onEditPlant }) {
 
     return (
         <div className="plant-item">
-            <div>
-                <img src={plant.photo}></img>
+            <div className="plantImage">
+                <img className="plantImage" src={plant.photo}></img>
             </div>
             <div>
             <h3 className='plantItemHeading'>{plant.name}</h3>

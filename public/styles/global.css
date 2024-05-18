@@ -150,3 +150,8 @@ body {
 .deletePlantButton{
     background-color: rgb(219, 87, 87);
 }
+
+.plantImage{
+    width:5rem;
+    height:5rem;
+}
