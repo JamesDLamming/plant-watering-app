@@ -15,13 +15,24 @@ function EditPlantModal({ plant, onClose, onSave, onDelete }) {
         photo: plant.photo
     });
 
+    const [imagePreview, setImagePreview] = useState(plant.photo); // State for image preview
+
+
     const handleChange = (e) => {
         const { name, value, files } = e.target;
 
-        setPlantData({
-            ...plantData,
-            [name]: files ? files[0] : value // Handle file input
-        });
+        if (name === 'photo' && files && files[0]) {
+            setImagePreview(URL.createObjectURL(files[0])); // Update the image preview
+            setPlantData({
+                ...plantData,
+                [name]: files[0] // Handle file input
+            });
+        } else {
+            setPlantData({
+                ...plantData,
+                [name]: value
+            });
+        }
     };
 
     const handleSubmit = (event) => {
@@ -86,7 +97,7 @@ function EditPlantModal({ plant, onClose, onSave, onDelete }) {
             <input type="number" name="wateringFrequency" className='form-input' value={plantData.wateringFrequency} onChange={handleChange} />
         </div>
         <div className="plantImage">
-            <img className="plantImage" src={plant.photo} onClick={() => document.getElementById('fileInput').click()} alt="Plant" />
+        <img className="plantImage" src={imagePreview} onClick={() => document.getElementById('fileInput').click()} alt="Plant" />
             <input
                 id="fileInput"
                 type="file"
