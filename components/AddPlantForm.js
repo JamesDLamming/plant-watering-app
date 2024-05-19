@@ -72,7 +72,7 @@ function AddPlantForm({ addPlant, onClose }) {
                 <input className="form-input" type="number" min="1" name="wateringAmount" value={plant.wateringAmount} onChange={handleChange} placeholder="Water Amount (ml)" required />
             </div>
             <div className='form-input-parent'>
-                <input className="form-input" type="file" name="photo" onChange={handleChange} placeholder="Photo" />
+                <input className="form-input" type="file" name="photo" onChange={handleChange} placeholder="Add photo" />
             </div>
             <div className='form-input-parent'>
                 <button type="submit" className="button">Add Plant</button>

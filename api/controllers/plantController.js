@@ -54,7 +54,6 @@ async function updateWaterDate(req, res) {
 // Edit Plant
 async function updatePlant(req, res) {
     const { id } = req.params;
-    const { name, location, wateringFrequency, lastWateredDate, nextWaterDate } = req.body;
 
     try {
         // Find the document by ID and update it
@@ -63,18 +62,23 @@ async function updatePlant(req, res) {
             return res.status(404).send('Plant not found');
         }
 
+        const { name, location, wateringFrequency, lastWateredDate, nextWaterDate } = req.body;
+        const photo = req.file ? req.file.location : plant.photo; // Use new photo if uploaded, otherwise keep the existing photo
+    
+
         // Update fields
         plant.name = name || plant.name;
         plant.location = location || plant.location;
         plant.wateringFrequency = wateringFrequency || plant.wateringFrequency;
         plant.lastWateredDate = lastWateredDate || plant.lastWateredDate;
         plant.nextWaterDate = nextWaterDate || plant.nextWaterDate;
+        plant.photo = photo
 
         await plant.save();  // Save the updated document
 
-        res.json(plant);  // Send back the updated plant data
+        res.status(201).json(plant);
     } catch (err) {
-        console.error(err);
+        console.error('Error updating plant:', err);
         res.status(500).send('Server error');
     }
 };

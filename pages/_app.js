@@ -51,11 +51,10 @@ const updatePlantWateringDate = (plantId, newDates) => {
     .catch(error => console.error('Failed to update plant:', error));
 };
 
-const updatePlant = (plantId, newData) => {
+const updatePlant = (plantId, editFormData) => {
     fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/plants/${plantId}/edit`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newData)
+        body: editFormData
     })
     .then(response => {
         if (!response.ok) {
@@ -65,6 +64,8 @@ const updatePlant = (plantId, newData) => {
     })
     .then(updatedPlant => {
         setPlants(plants => plants.map(plant => plant._id === plantId ? updatedPlant : plant));
+        console.log('Plant updated:', updatedPlant);
+
     })
     .catch(error => {
         console.error('Failed to update plant:', error);
